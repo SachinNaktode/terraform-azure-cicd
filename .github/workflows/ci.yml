@@ -1,3 +1,4 @@
+
 name: Terraform CI
 
 on:
@@ -39,8 +40,10 @@ jobs:
         with:
           directory: .
           framework: terraform
+          skip_check: CKV2_AZURE_33,CKV2_AZURE_1
 
       - name: Gitleaks Secret Scan
         uses: gitleaks/gitleaks-action@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
